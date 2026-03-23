@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task Management App</title>
+    <script defer src="app.js"></script>
+  </head>
+  <body>
+    <h1>Task Management App</h1>
+    <input id="itemInput" type="text" placeholder="Enter an Task Name:" />
+
+        <label for ="category-select">Choose the Category:</label> 
+      <select name = "category" id = "category-select">
+        <option value = "">--Please choose a Category</option>
+        <option value = "urgentCategory">Urgent</option>
+        <option value = "importantCategory">Important</option>
+        <option value = "upcomingCategory">Upcoming</option>
+      </select>
+    
+    <input id="deadline" type="date" placeholder="Enter an Deadline" />
+    
+    <label for = "status-select">Choose the Status:</label> 
+      <select name = "status" id = "status-select">
+        <option value = "">--Please choose a status</option>
+        <option value = "inProgressStatus">In Progress</option>
+        <option value = "completedStatus">Completed</option>
+      </select>
+
+    <button id="addItemButton">Add Item</button>
+    <ul id="cart"></ul>
+  </body>
+</html>
