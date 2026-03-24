@@ -1,4 +1,47 @@
 <!DOCTYPE html>
+<style>
+  #InputSection {
+    background-color: lightblue;
+    width:500px;
+  }
+  #ErrorMessage {
+    color: red;
+  }
+
+  td {
+    width: 200px;
+  }
+
+  th {
+    width: 200px;
+  }
+
+  .ChangeStatusDialog{
+    display: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+  .ChangeStatusDialog.show{
+    display: block;
+  }
+
+/* The modal box */
+.modal-box {
+  background: white;
+  width: 90%;
+  max-width: 400px;
+  margin: 100px auto;
+  padding: 20px;
+  border-radius: 10px;
+  position: relative;
+}
+
+</style>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -8,26 +51,89 @@
   </head>
   <body>
     <h1>Task Management App</h1>
-    <input id="itemInput" type="text" placeholder="Enter an Task Name:" />
+    <div id="CurrentDate">Current Date : </div>
 
-        <label for ="category-select">Choose the Category:</label> 
-      <select name = "category" id = "category-select">
-        <option value = "">--Please choose a Category</option>
-        <option value = "urgentCategory">Urgent</option>
-        <option value = "importantCategory">Important</option>
-        <option value = "upcomingCategory">Upcoming</option>
-      </select>
-    
-    <input id="deadline" type="date" placeholder="Enter an Deadline" />
-    
-    <label for = "status-select">Choose the Status:</label> 
-      <select name = "status" id = "status-select">
-        <option value = "">--Please choose a status</option>
-        <option value = "inProgressStatus">In Progress</option>
-        <option value = "completedStatus">Completed</option>
+    <div id="InputSection" class="">
+      <table id="InputTable" border=0>
+        <body>
+          <tr>
+            <td>Task Name </td>
+            <td>              
+              <input id="tasknameInput" type="text" placeholder="Enter an Task Name:" />
+            </td>
+          </tr>
+          <tr>
+            <td> Category </td>
+            <td>              
+              <input id="categoryInput" type="text" placeholder="Enter Category:" />
+            </td>
+          </tr>
+          <tr>
+            <td> Deadline Date </td>
+            <td>              
+              <input id="deadlineInput" type="date" placeholder="Enter an Deadline" value="current"/>
+            </td>
+          </tr>
+          <tr>
+            <td> Initial Status </td>
+            <td>              
+              <select name = "status" id = "status-select">                
+                <option value = "In Progress">In Progress</option>
+                <option value = "Completed">Completed</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <button id="addTaskButton">Add Task</button>
+            </td>
+            <td id="ErrorMessage">
+              Please enter required fields!
+            </td>
+          </tr>
+        </body>
+
+      </table>
+    </div>
+    <br>
+    <br>
+    <div>
+      Filter:
+      <select name = "filterstatus" id = "filterstatus-select">                
+        <option value = "In Progress">In Progress</option>
+        <option value = "Completed">Completed</option>
       </select>
 
-    <button id="addItemButton">Add Item</button>
-    <ul id="cart"></ul>
+    </div>
+    <div id="TaskSection">
+      <ul id="task"></ul>
+      <table id="TaskTable" border="1">
+        <thead>
+          <tr>
+            <th>Task Name</th>
+            <th>Category</th>
+            <th>Deadline date</th>
+            <th>Current Status</th>
+            <th></th>
+          </tr>
+        </head>
+        <tbody id="TaskBody">
+
+        </body>
+      </table>
+    </div>
+    <div id = "ChangeStatusDialog" class="ChangeStatusDialog">
+      
+      <div class="modal-box">
+        Pick a status.
+        <select name = "status" id = "newstatus-select">                
+          <option value = "In Progress">In Progress</option>
+          <option value = "Completed">Completed</option>
+        </select>
+        <button id="submitBtn" class="modal-close" data-indexnumber="-1">Submit</button>
+        <button id="cancelBtn" class="modal-close">Cancel</button>
+      </div>
+      
+    </div>
   </body>
 </html>
